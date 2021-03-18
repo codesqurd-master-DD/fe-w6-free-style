@@ -1,23 +1,25 @@
 "use strict";
+import {
+  googleTranslator,
+  papagoTranslator,
+  kakaoTranslator,
+} from "./back/translators.js";
 
-const { googleTranslator } = require("./translator/google");
-const { papagoTranslator } = require("./translator/papago");
-const { kakaoTranslator } = require("./translator/kakao");
-
-const path = require("path");
-const express = require("express");
+import path from "path";
+import express from "express";
 const app = express();
+const __dirname = path.resolve();
 
 app.use(express.urlencoded({ extend: false }));
 app.use(express.json());
 
 const PORT = process.env.PORT || 8080;
-const DIST_DIR = path.join(__dirname, "dist");
+const DIST_DIR = path.join(__dirname);
 
 app.use(express.static(DIST_DIR));
 
 app.get("/", (req, res) => {
-  const index = path.join(__dirname, "dist", "index.html");
+  const index = path.join(__dirname, "front", "index.html");
   res.sendFile(index);
 });
 
