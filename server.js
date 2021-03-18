@@ -14,9 +14,9 @@ app.use(express.urlencoded({ extend: false }));
 app.use(express.json());
 
 const PORT = process.env.PORT || 8080;
-const DIST_DIR = path.join(__dirname);
+const ROOT_DIR = path.join(__dirname);
 
-app.use(express.static(DIST_DIR));
+app.use(express.static(ROOT_DIR));
 
 app.get("/", (req, res) => {
   const index = path.join(__dirname, "front", "index.html");

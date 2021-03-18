@@ -7,7 +7,7 @@ export default class Deact {
     this.createApp();
   }
   async createApp() {
-    await this.setup();
+    await this.setState();
     this.render();
     this.mountComponents();
   }
@@ -62,7 +62,7 @@ export default class Deact {
     return JSON.stringify(prevProps) !== JSON.stringify(nextProps);
   }
 
-  createComponent(Constructor, targetSelector, getProps) {
+  createComponent(Constructor, targetSelector, getProps = () => {}) {
     const $target = this.$target.querySelector(targetSelector);
     const props = getProps();
     const component = new Constructor($target, props);
