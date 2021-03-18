@@ -4,7 +4,7 @@ import TodoAppender from "./components/TodoAppender.js";
 import TodoList from "./components/TodoList.js";
 import TodoFilter from "./components/TodoFilter.js";
 export default class App extends Deact {
-  setup() {
+  setState() {
     this.state = localStorage.getItem("state")
       ? JSON.parse(localStorage.getItem("state"))
       : {
